@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "User Dashboard Page", type: :feature do
     it 'displays user attribues, name, discover movies, viewing parties' do
-        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
-        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com")
+        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
+        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
 
         visit "/"
         click_on "Micheal Jordan"
@@ -16,8 +16,8 @@ RSpec.describe "User Dashboard Page", type: :feature do
     end
 
     it 'a users dashboard shows all viewing parties' do
-        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
-        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com")
+        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
+        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
     
         party1 = ViewingParty.create!(duration: 90, date: "Mon, 29 Aug 2022 14:00:00 UTC +00:00", host_id: user2.id, movie_id: 244)
         party2 = ViewingParty.create!(duration: 120, date: "Mon, 30 Aug 2022 17:00:00 UTC +00:00", host_id: user2.id, movie_id: 545)
@@ -32,8 +32,8 @@ RSpec.describe "User Dashboard Page", type: :feature do
     end
 
     it 'displays a button to Discover Movies' do 
-        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
-        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com")
+        user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
+        user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
         # party1 = ViewingParty.create!(duration: 90, date: "Mon, 29 Aug 2022 14:00:00 UTC +00:00", host_id: user2.id, movie_id: 244)
         # party2 = ViewingParty.create!(duration: 120, date: "Mon, 30 Aug 2022 17:00:00 UTC +00:00", host_id: user2.id, movie_id: 545)
         # userparty1= UserViewingParty.create!(user_id: user1.id, viewing_party_id: party1.id)

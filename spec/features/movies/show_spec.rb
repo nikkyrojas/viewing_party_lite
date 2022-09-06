@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe "Movie Detail Page" do 
   it 'has movie details', :vcr do 
-    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
+    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
 
     visit "/users/#{@user1.id}/movies/19404"
     
@@ -16,7 +16,7 @@ RSpec.describe "Movie Detail Page" do
     # expect(page).to have_content("Total Reviews: ")
     end
   it 'has button to create viewing party/redirects to new form', :vcr do 
-    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
+    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
 
     visit "/users/#{@user1.id}/movies/19404"
     expect(page).to have_button("Create Viewing Party")
@@ -26,8 +26,7 @@ RSpec.describe "Movie Detail Page" do
     end
   
     it 'has button to return to discover page', :vcr do 
-    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com")
-
+    @user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
     visit "/users/#{@user1.id}/movies/19404"
     
     expect(page).to have_button("Discover Movies")

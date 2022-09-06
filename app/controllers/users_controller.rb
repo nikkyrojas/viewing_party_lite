@@ -1,29 +1,31 @@
 
 class UsersController < ApplicationController 
-  def new 
-  end
 
   def show 
     @user = User.find(params[:id])
   end
 
-  def create 
-    user = User.find_by_email(params[:email])
-    if user 
-    # if User.exists?(params[:email])
-      flash[:alert] = "That email address is already registered."
-      redirect_to "/register"
+  def new 
+    @user = User.new
+  end
+
+  def create
+    new_user = User.create(user_params) if User.find_by_email(user_params[:email]) == nil
+    if new_user.save
+      redirect_to user_path(new_user)
     else
-      @user = User.create!(user_params)
-      # require 'pry'; binding.pry 
-      redirect_to "/users/#{@user.id}"
+      redirect_to register_path
     end
   end
+  
   def discover
     @user = User.find(params[:id])
   end
-private 
-  def user_params 
-    params.permit(:name, :email)
+
+  private 
+  def user_params
+ 
+    params.permit(:name, :email, :password, :password_confirmation) 
+    # params.require(:user).permit(:name, :email, :password, :password_confirmation) 
   end
 end

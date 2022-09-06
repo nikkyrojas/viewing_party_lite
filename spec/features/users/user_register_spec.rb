@@ -7,6 +7,7 @@ RSpec.describe "user registration page" do
 
     expect(page).to have_field(:name)
     expect(page).to have_field(:email)
+    expect(page).to have_field(:password)
     expect(page).to have_button("Register")
   end
 
@@ -16,12 +17,14 @@ RSpec.describe "user registration page" do
 
     fill_in :name, with: "Sam Smith"
     fill_in :email, with: "sam@smith.com"
+    fill_in :password, with: "Password123!"
+    fill_in :password_confirmation, with: "Password123!"
     click_on "Register"
 
-    test = User.first 
+    new_user = User.first 
 
-    expect(current_path).to eq("/users/#{test.id}")
-    expect(test.email).to eq("sam@smith.com")
+    expect(current_path).to eq("/users/#{new_user.id}")
+    expect(new_user.email).to eq("sam@smith.com")
   end
 
   it "should not register the user if the email address is already in use" do 
@@ -31,7 +34,6 @@ RSpec.describe "user registration page" do
     fill_in :name, with: "Jane Doe"
     fill_in :email, with: "sam@smith.com"
     click_on "Register"
-    # save_and_open_page
     expect(current_path).to eq("/register")
   end
 end
