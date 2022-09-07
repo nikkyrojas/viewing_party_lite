@@ -10,12 +10,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = User.create(user_params) if User.find_by_email(user_params[:email]) == nil
+    new_user = User.create!(user_params) 
+    binding.pry
     if new_user.save
       redirect_to user_path(new_user)
-    else
+      flash[:success] = "Your Account has been Created, #{new_user.name}!"
+    else new_user == nil
       redirect_to register_path
+      flash[:error] = "Missing Fields"
     end
+    binding.pry
   end
   
   def discover
