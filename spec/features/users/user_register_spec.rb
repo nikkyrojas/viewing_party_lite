@@ -51,6 +51,7 @@ RSpec.describe "user registration page" do
 
     expect(current_path).to eq("/register")
   end
+  
   it "should not register if passwords dont match" do 
     visit "/register"
 
@@ -62,7 +63,6 @@ RSpec.describe "user registration page" do
 
     expect(current_path).to eq("/register")
   end
-
 end
 # As a visitor 
 # When I visit `/register`

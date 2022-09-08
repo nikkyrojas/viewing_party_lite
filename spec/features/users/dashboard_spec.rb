@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User Dashboard Page", type: :feature do
-    it 'displays user attribues, name, discover movies, viewing parties' do
+    xit 'displays user attributes, name, discover movies, viewing parties if your an admin' do
         user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
         user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
 
@@ -15,7 +15,7 @@ RSpec.describe "User Dashboard Page", type: :feature do
         expect(page).to_not have_content("Kobe Bryant")
     end
 
-    it 'a users dashboard shows all viewing parties' do
+    xit 'a users dashboard shows all viewing parties when you log in' do
         user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
         user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
     
@@ -31,7 +31,7 @@ RSpec.describe "User Dashboard Page", type: :feature do
         expect(page).to have_content(party2.id)
     end
 
-    it 'displays a button to Discover Movies' do 
+    xit 'displays a button to Discover Movies when you log in and click link' do 
         user1 = User.create!(name: "Micheal Jordan", email: "user1@gmail.com", password: "Password123!")
         user2 = User.create!(name: "Kobe Bryant", email: "user2@gmail.com", password: "Password423!")
         # party1 = ViewingParty.create!(duration: 90, date: "Mon, 29 Aug 2022 14:00:00 UTC +00:00", host_id: user2.id, movie_id: 244)
